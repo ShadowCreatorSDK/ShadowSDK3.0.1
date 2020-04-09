@@ -1,29 +1,5 @@
-
-------------------------------latest version----------------------------
-SDK version number: ShadowSDK2020
+SDK version number: ShadowSDK3.0.1
 Recommended Unity Version:2019.2.3f1
-Date:20200102
-ShadowSDK3.0.0 document directory
-Assets\Documents\zh
-
-
-------------------------------history version----------------------------
-SDK version number: ShadowSDK2.0.7
-Recommended Unity Version:2017.3.0f3
-Date:20181221 
-ShadowSDK2.0.7 official download address:
-http://www.shadowcreator.com/developer/zip/ShadowSDK2.0.7.zip
-http://www.shadowcreator.com/developer/zip/ShadowSDK2.0.7.unitypackage
-ShadowSDK2.0.7 Release Notes
-http://www.shadowcreator.com/developer/zip/ShadowSDK2.0.7%20Release%20Notes.pdf
-
-
-------------------------------history version----------------------------
-SDK version number: ShadowSDK2.0.6
-Recommended Unity Version:2017.3.0f3
-Date:20181210 
-ShadowSDK2.0.6  official download address:
-http://www.shadowcreator.com/developer/zip/ShadowSDK2.0.6.zip
-http://www.shadowcreator.com/developer/zip/ShadowSDK2.0.6.unitypackage
-ShadowSDK2.0.6 Release Notes
-http://www.shadowcreator.com/developer/zip/ShadowSDK2.0.6%20Release%20Notes.pdf
+Github: https://github.com/ShadowCreatorSDK/ShadowSDK3.0.1
+OfficialWebsite: http://www.shadowcreator.com/
+Documents:ShadowCreator/Documents/

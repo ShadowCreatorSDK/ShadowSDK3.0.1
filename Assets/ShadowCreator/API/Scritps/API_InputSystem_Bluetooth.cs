@@ -143,15 +143,15 @@ public class API_InputSystem_Bluetooth {
 
     ///API-No.159
     /// <summary>
-    /// BTRight/BTLeft 是否碰撞到Collider，若不为null,可以通过BTHitInfo获取碰撞信息，
+    /// BTRight/BTLeft 碰撞到Collider，若不为null,可以通过BTHitInfo获取碰撞信息，
     /// </summary>
     /// <param name="type">右手柄 BTRight /  左手柄 BTLeft</param>
     /// <returns></returns>
-    public static bool IsBTHitTarget(BTType type = BTType.Right) {
+    public static GameObject BTHitTarget(BTType type = BTType.Right) {
         if(BTPointerEventData(type) != null) {
-            return BTPointerEventData(type).target == null?false:true;
+            return BTPointerEventData(type).target;
         }
-        return false;
+        return null;
     }
 
     ///API-No.160

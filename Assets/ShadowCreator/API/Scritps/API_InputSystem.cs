@@ -77,4 +77,103 @@ public class API_InputSystem {
     ///支持的事件有：
     ///partAnyKeyDownDelegate partAnyKeyLongDelegate partAnyKeyUpDelegate partEnterKeyDownDelegate partEnterKeyDragDelegate partEnterKeyUpDelegate
 
+
+    ///API-No.58
+    /// <summary>
+    /// 输入设备检测的目标，优先级为Head/BTRight/BTLeft/GTRight/GTLeft
+    /// </summary>
+    public static GameObject Target {
+        get {
+            if(API_InputSystem_Head.Head != null) {
+                return API_InputSystem_Head.HeadHitTarget;
+            } else if(API_InputSystem_Bluetooth.BTRight != null) {
+                return API_InputSystem_Bluetooth.BTHitTarget(API_InputSystem_Bluetooth.BTType.Right);
+            } else if(API_InputSystem_Bluetooth.BTLeft != null) {
+                return API_InputSystem_Bluetooth.BTHitTarget(API_InputSystem_Bluetooth.BTType.Left);
+            } else if(API_InputSystem_Gesture26Dof.GTRight != null) {
+                return API_InputSystem_Gesture26Dof.GTHitTarget(API_InputSystem_Gesture26Dof.GestureType.Right);
+            } else if(API_InputSystem_Gesture26Dof.GTLeft != null) {
+                return API_InputSystem_Gesture26Dof.GTHitTarget(API_InputSystem_Gesture26Dof.GestureType.Left);
+            }
+            return null;
+        }
+    }
+
+    ///API-No.59
+    /// <summary>
+    /// 输入设备的发射射线起点，优先级为Head/BTRight/BTLeft/GTRight/GTLeft
+    /// </summary>
+    public static GameObject Gazer {
+        get {
+            if(API_InputSystem_Head.Head != null) {
+                return API_InputSystem_Head.Head.inputDeviceUIBase.model.lineIndicate.StartPoint.gameObject;
+            } else if(API_InputSystem_Bluetooth.BTRight != null) {
+                return API_InputSystem_Bluetooth.BTRight.inputDeviceUIBase.model.lineIndicate.StartPoint.gameObject;
+            } else if(API_InputSystem_Bluetooth.BTLeft != null) {
+                return API_InputSystem_Bluetooth.BTLeft.inputDeviceUIBase.model.lineIndicate.StartPoint.gameObject;
+            } else if(API_InputSystem_Gesture26Dof.GTRight != null) {
+                return API_InputSystem_Gesture26Dof.GTRight.inputDeviceUIBase.model.lineIndicate.StartPoint.gameObject;
+            } else if(API_InputSystem_Gesture26Dof.GTLeft != null) {
+                return API_InputSystem_Gesture26Dof.GTLeft.inputDeviceUIBase.model.lineIndicate.StartPoint.gameObject;
+            }
+            return null;
+        }
+    }
+
+
+    ///API-No.60
+    /// <summary>
+    /// 输入设备的发射射线方向，优先级为Head/BTRight/BTLeft/GTRight/GTLeft
+    /// </summary>
+    public static Vector3 Normal {
+        get {
+            if(Gazer!=null) {
+                return Gazer.transform.forward;
+            }
+            return Vector3.zero;
+        }
+    }
+
+    ///API-No.61
+    /// <summary>
+    /// 输入设备Focus的位置，优先级为Head/BTRight/BTLeft/GTRight/GTLeft
+    /// </summary>
+    public static Vector3 Position {
+        get {
+            if(API_InputSystem_Head.Head != null) {
+                return API_InputSystem_Head.GetHeadFocus.transform.position;
+            } else if(API_InputSystem_Bluetooth.BTRight != null) {
+                return API_InputSystem_Bluetooth.GetBTFocus(API_InputSystem_Bluetooth.BTType.Right).transform.position;
+            } else if(API_InputSystem_Bluetooth.BTLeft != null) {
+                return API_InputSystem_Bluetooth.GetBTFocus(API_InputSystem_Bluetooth.BTType.Left).transform.position;
+            } else if(API_InputSystem_Gesture26Dof.GTRight != null) {
+                return API_InputSystem_Gesture26Dof.GetGTFocus(API_InputSystem_Gesture26Dof.GestureType.Right).transform.position;
+            } else if(API_InputSystem_Gesture26Dof.GTLeft != null) {
+                return API_InputSystem_Gesture26Dof.GetGTFocus(API_InputSystem_Gesture26Dof.GestureType.Left).transform.position;
+            }
+            return Vector3.zero;
+        }
+    }
+
+    ///API-No.62
+    /// <summary>
+    /// 获取当前的具体输入设备，优先级为Head/BTRight/BTLeft/GTRight/GTLeft
+    /// </summary>
+    public static InputDevicePartBase InputDeviceCurrent {
+        get {
+            if(API_InputSystem_Head.Head != null) {
+                return API_InputSystem_Head.Head;
+            } else if(API_InputSystem_Bluetooth.BTRight != null) {
+                return API_InputSystem_Bluetooth.BTRight;
+            } else if(API_InputSystem_Bluetooth.BTLeft != null) {
+                return API_InputSystem_Bluetooth.BTLeft;
+            } else if(API_InputSystem_Gesture26Dof.GTRight != null) {
+                return API_InputSystem_Gesture26Dof.GTRight;
+            } else if(API_InputSystem_Gesture26Dof.GTLeft != null) {
+                return API_InputSystem_Gesture26Dof.GTLeft;
+            }
+            return null;
+        }
+    }
+
 }

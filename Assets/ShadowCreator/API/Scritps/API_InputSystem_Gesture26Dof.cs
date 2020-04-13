@@ -83,15 +83,15 @@ public class API_InputSystem_Gesture26Dof {
 
     ///API-No.205
     /// <summary>
-    /// GTLeft/GTRight 是否碰撞到Collider，若不为null,可以通过GTHitInfo获取碰撞信息，
+    /// GTLeft/GTRight 碰撞到Collider，若不为null,可以通过GTHitInfo获取碰撞信息，
     /// </summary>
     /// <param name="type"></param>
     /// <returns></returns>
-    public static bool IsGTHitTarget(GestureType type = GestureType.Right) {
+    public static GameObject GTHitTarget(GestureType type = GestureType.Right) {
         if(GTPointerEventData(type) != null) {
-            return GTPointerEventData(type).target == null ? false : true;
+            return GTPointerEventData(type).target;
         }
-        return false;
+        return null;
     }
 
     ///API-No.206

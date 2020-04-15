@@ -6,20 +6,17 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using System;
 
-public class BackKeyCallBackSet : PointerDelegate
+public class BackKeyOverride : PointerDelegate
 {
-
-    static BackKeyCallBackSet instant;
-    public EventTrigger eventTrigger;
-    public bool IsBackQuit = true;
-    public Action BackKeyCallBack;
+    static BackKeyOverride Instant;
+    event Action BackKeyCallBack;
 
     void Awake() {
-        if(instant) {
+        if(Instant) {
             DestroyImmediate(gameObject);
             return;
         }
-        instant = this;
+        Instant = this;
         DontDestroyOnLoad(gameObject);
     }
 
@@ -34,11 +31,31 @@ public class BackKeyCallBackSet : PointerDelegate
         }
     }
 
+    public static void AddBackKeyCallBack(Action BackKeyCallBack) {
+        if(Instant) {
+            Instant.BackKeyCallBack += BackKeyCallBack;
+        } else {
+            Debug.Log("Error:Please Put BackKeyOverride Scritps to a GameObject");
+        }
+    }
+    public static void RemoveBackKeyCallBack(Action BackKeyCallBack) {
+        if(Instant) {
+            Instant.BackKeyCallBack -= BackKeyCallBack;
+        }
+    }
+
     void Update() {
         if(BackKeyCallBack != null) {
             Input.backButtonLeavesApp = false;
         } else {
             Input.backButtonLeavesApp = true;
         }
+
+#if UNITY_EDITOR
+        if(Input.GetKeyDown(KeyCode.Escape)) {
+            partAnyKeyDownDelegate(InputKeyCode.Back, null);
+        }
+#endif
+
     }
 }
